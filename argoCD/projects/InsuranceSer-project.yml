@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+
+metadata:
+  name: InsuranceSer
+
+spec:
+
+  sourceRepos:
+    - '*'
+
+  destinations:
+    - namespace: InsuranceSer-dev
+      server: https://kubernetes.default.svc
+
+    - namespace: InsuranceSer-qa
+      server: https://kubernetes.default.svc
+
+    - namespace: InsuranceSer-prod
+      server: https://kubernetes.default.svc
+
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'

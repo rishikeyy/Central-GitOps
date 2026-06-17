@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: InsuranceSer-prod
+  namespace: argocd
+
+spec:
+
+  project: InsuranceSer
+
+  source:
+    repoURL: https://github.com/company/myapp-gitops.git
+
+    targetRevision: main
+
+    path: charts/myapp
+
+    helm:
+      valueFiles:
+        - ../../environments/dev/values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: InsuranceSer-prod
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
