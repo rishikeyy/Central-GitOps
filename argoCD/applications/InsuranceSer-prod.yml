@@ -10,7 +10,7 @@ spec:
   project: InsuranceSer
 
   source:
-    repoURL: https://github.com/company/myapp-gitops.git
+    repoURL: https://github.com/rishikeyy/Central-Helm.git
 
     targetRevision: main
 
@@ -18,7 +18,7 @@ spec:
 
     helm:
       valueFiles:
-        - ../../environments/dev/values.yaml
+        - ../../environments/prod/values.yaml
 
   destination:
     server: https://kubernetes.default.svc
