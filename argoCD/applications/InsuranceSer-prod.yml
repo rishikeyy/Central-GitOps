@@ -14,7 +14,7 @@ spec:
 
     targetRevision: main
 
-    path: charts/myapp
+    path: charts/InsuranceService
 
     helm:
       valueFiles:

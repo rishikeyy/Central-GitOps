@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: InsuranceSer-qa
+  namespace: argocd
+
+spec:
+
+  project: InsuranceService
+
+  source:
+    repoURL: https://github.com/rishikeyy/Central-Helm.git
+
+    targetRevision: main
+
+    path: charts/InsuranceService
+
+    helm:
+      valueFiles:
+        - ../../environments/dev/values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: InsuranceSer-qa
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
